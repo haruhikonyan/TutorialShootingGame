@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public GameObject bulletPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
+	// Start is called before the first frame update
+	void Start()
+	{
+			
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+　　// プレイヤーの移動範囲を制限するRangeを呼び出す
+　　transform.localPosition = Range.ClampPosition( transform.localPosition );
 　　// 矢印キーでプレイヤーを移動する
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 			transform.Translate (-0.1f, 0, 0);
@@ -26,5 +30,8 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			transform.Translate ( 0,-0.1f, 0);
 		}
-    }
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			Instantiate (bulletPrefab, transform.position, Quaternion.identity);
+		}
+	}
 }
