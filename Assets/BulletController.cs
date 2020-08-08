@@ -19,4 +19,15 @@ public class BulletController : MonoBehaviour
 			Destroy (gameObject);
 		}
 	}
+    // オブジェクトにアタッチしたトリガーの中に別のオブジェクトが入ったとき(衝突判定がった時？)に呼び出されます。（2D 物理挙動のみ）
+    // 入ったオブジェクトに関する詳細な情報は呼び出し時に渡される Collision2D 引数に代入されます。つまり衝突した Enemy
+    // see: https://docs.unity3d.com/ja/current/ScriptReference/MonoBehaviour.OnTriggerEnter2D.html
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        // 衝突した時にオブジェクトを消す
+        // Enemy     
+		Destroy (coll.gameObject);
+        // Bullet
+		Destroy (gameObject);
+	}
 }
