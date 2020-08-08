@@ -29,5 +29,7 @@ public class BulletController : MonoBehaviour
 		Destroy (coll.gameObject);
         // Bullet
 		Destroy (gameObject);
+        // 衝突したときにスコアを更新する
+		GameObject.Find ("Canvas").GetComponent<GameSystem> ().AddScore ();
 	}
 }
