@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 			transform.Translate ( 0,-0.1f, 0);
 		}
 		if (Input.GetKeyDown (KeyCode.Space)) {
+			// bulletPrefab を Player の位置に Player と同じ向きで配置
 			Instantiate (bulletPrefab, transform.position, Quaternion.identity);
 		}
 	}
