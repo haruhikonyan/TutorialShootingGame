@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	public GameObject bulletPrefab;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -27,6 +29,9 @@ public class PlayerController : MonoBehaviour
 		}
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			transform.Translate ( 0,-0.1f, 0);
+		}
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			Instantiate (bulletPrefab, transform.position, Quaternion.identity);
 		}
 	}
 }
