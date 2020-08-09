@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	public GameObject bulletPrefab;
+	//爆発エフェクトのPrefab
+	public GameObject explodePrefab;
 	Vector3 mousePos;
 
 	// Start is called before the first frame update
@@ -64,5 +66,11 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			transform.Translate ( 0,-0.1f, 0);
 		}
+	}
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		GameObject effect = Instantiate (explodePrefab, transform.position, Quaternion.identity) as GameObject;
+		Destroy (effect, 1.0f);
+		GameObject.Find ("Canvas").GetComponent<GameSystem> ().GameOver ();
 	}
 }
