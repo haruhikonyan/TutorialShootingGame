@@ -35,4 +35,8 @@ public class PlayerController : MonoBehaviour
 			Instantiate (bulletPrefab, transform.position, Quaternion.identity);
 		}
 	}
+    // プレイヤーを削除する	
+    public void DeletePlayer (){
+        Destroy (gameObject);
+　　}
 }

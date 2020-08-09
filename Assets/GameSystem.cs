@@ -8,6 +8,20 @@ public class GameSystem : MonoBehaviour
 	int score = 0;
 	GameObject scoreText;
 
+　　// 処理を一度だけ行う
+    bool isCalledOnce = false;
+
+    public void GameOver(){
+		if (!isCalledOnce)
+        {
+            isCalledOnce = true;
+            //プレイヤーを消す
+            GameObject.Find ("player").GetComponent<PlayerController> ().DeletePlayer();
+            //ゲームオーバーパネルを表示する
+            GameObject.Find ("PanelScript").GetComponent<PanelManager> ().StopGame();
+	　　}
+	}
+
 	public void AddScore(){
 		this.score += 100;
 	}
