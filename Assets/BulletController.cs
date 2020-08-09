@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+　　//爆発エフェクトのPrefab
+	public GameObject explodePrefab;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +34,8 @@ public class BulletController : MonoBehaviour
 		Destroy (gameObject);
         // 衝突したときにスコアを更新する
 		GameObject.Find ("Canvas").GetComponent<GameSystem> ().AddScore ();
+        // 爆発エフェクトを作成	
+		GameObject effect = Instantiate (explodePrefab, transform.position, Quaternion.identity) as GameObject;
+		Destroy (effect, 1.0f);
 	}
 }
