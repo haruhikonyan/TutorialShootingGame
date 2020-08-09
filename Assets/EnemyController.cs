@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour
 		transform.Rotate(0, 0, rotSpeed );
 		if (transform.position.y < -5.5f) {
 			Destroy (gameObject);
+            GameObject.Find ("Canvas").GetComponent<GameSystem> ().GameOver ();
 		}
     }
 }
